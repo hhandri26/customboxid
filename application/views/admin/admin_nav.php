@@ -36,10 +36,6 @@
           <a href="<?php echo base_url('admin/about');?>"><i class="fa fa-ellipsis-v"></i>Tentang Kami</a>
         </li>
 
-        <li <?php echo (basename($_SERVER['PHP_SELF']) == 'product')? $active :""; ?>>
-          <a href="<?php echo base_url('admin/product');?>"><i class="fa fa-ellipsis-v"></i> Produk</a>
-        </li>
-
         <li <?php echo (basename($_SERVER['PHP_SELF']) == 'faq')? $active :""; ?>>
           <a href="<?php echo base_url('admin/faq');?>"><i class="fa fa-ellipsis-v"></i> Faq</a>
         </li>
@@ -51,8 +47,32 @@
       </ul>
     </li>
 
-    <!-- pesan -->
-    <li class="treeview <?php echo ($nav_top == 'pesan')? $class :""; ?>">
+    <li class="treeview <?php echo ($nav_top == 'master')? $class :""; ?>">
+      <a href="#">
+        <i class="fa fa-gear"></i>
+        <span>Master</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li <?php echo (basename($_SERVER['PHP_SELF']) == 'product')? $active :""; ?>>
+          <a href="<?php echo base_url('master/product');?>"><i class="fa fa-ellipsis-v"></i>Master Produk</a>
+        </li>
+        <li <?php echo (basename($_SERVER['PHP_SELF']) == 'ukuran')? $active :""; ?>>
+          <a href="<?php echo base_url('master/ukuran');?>"><i class="fa fa-ellipsis-v"></i>Master ukuran</a>
+        </li>
+        <li <?php echo (basename($_SERVER['PHP_SELF']) == 'qty')? $active :""; ?>>
+          <a href="<?php echo base_url('master/qty');?>"><i class="fa fa-ellipsis-v"></i>Master Qty</a>
+        </li>
+        <li <?php echo (basename($_SERVER['PHP_SELF']) == 'harga')? $active :""; ?>>
+          <a href="<?php echo base_url('master/harga');?>"><i class="fa fa-ellipsis-v"></i>Master Harga</a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- orderan -->
+    <li class="treeview <?php echo ($nav_top == 'orderan')? $class :""; ?>">
       <a href="#">
         <i class="fa fa-envelope-o"></i>
         <span>Orderan</span>
@@ -61,8 +81,8 @@
         </span>
       </a>
       <ul class="treeview-menu">
-        <li <?php echo (basename($_SERVER['PHP_SELF']) == 'pesan')? $active :""; ?>>
-          <a href="<?php echo base_url('admin/pesan');?>"><i class="fa fa-copy"></i> Table </a>
+        <li <?php echo (basename($_SERVER['PHP_SELF']) == 'orderan')? $active :""; ?>>
+          <a href="<?php echo base_url('admin/orderan');?>"><i class="fa fa-copy"></i> Table </a>
         </li>
       </ul>
     </li>

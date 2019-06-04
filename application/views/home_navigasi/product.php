@@ -15,20 +15,20 @@
         <?php foreach ($table as $row) {?>
             <div class="col-md-4 col-sm-4">
                 <div  class="shopping_box margin-30px-bottom">
-                    <a href="shop-detail.html" class="display-inline"><div class="image position-relative">
+                    <a href="<?php echo base_url('detail-box/'.$row->id);?>" class="display-inline"><div class="image position-relative">
                         <img src="<?php echo base_url('assets/img/product/'.$row->gambar);?>" alt="Finza" class="img-responsive border-radius">
                         <div class="overlay">
                         </div>
                     </div>
                     </a>
                     <div class="shop_content text-center padding-5px-all margin-10px-top">
-                        <a href="shop-detail.html" class="text-large text-extra-dark-gray">
+                        <a href="<?php echo base_url('detail-box/'.$row->id);?>" class="text-large text-extra-dark-gray">
                           <?php echo $row->title;?>
                         </a>
                         <div class="shop-rating text-yellow margin-10px-tb">
                         </div>
                         <a class="btn btn-blue btn-medium text-extra-small margin-10px-bottom"
-                           href="shop-detail.html">View Details</a>
+                           href="<?php echo base_url('detail-box/'.$row->id);?>">View Details</a>
                     </div>
                 </div>
             </div>

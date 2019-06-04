@@ -20,3 +20,8 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/finza/css/style.css"/>
 <link rel="stylesheet" href="<?php echo base_url();?>assets/finza/css/color-schem-two.css"/>
 <link rel="stylesheet" href="<?php echo base_url();?>assets/finza/css/custom.css"/>
+<!-- sweet alert -->
+<link rel="stylesheet" href="<?php echo base_url();?>assets/sweet-alert2/sweetalert2.min.css"/>
+<!-- Icheck -->
+<link rel="stylesheet" href="<?php echo base_url();?>assets/admin/plugins/iCheck/all.css"/>
+

@@ -12,7 +12,7 @@
       </div>
       <div class="modal-body">
       <!--form-->
-      <?php echo form_open_multipart('admin/add_product/'); ?>
+      <?php echo form_open_multipart('master/add_product/'); ?>
         <div class="form-group">
             <img class="img-thumbnail" width="200" height="200" id="profile-pre" 
               src="<?php echo base_url('assets/img/df.jpg');?>" alt="your image" /><br><br>
@@ -51,17 +51,6 @@
   modal.find('.modal-body input').val(recipient)
 })
 </script>
-
-
-
- <?php if($this->session->flashdata('info')): ?>        
-      <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h4><i class="icon fa fa-check"></i> Info!</h4>
-        <?php echo $this->session->flashdata('info'); ?>
-      </div>
-    <?php endif; ?>
-
 <h3>heading deskripsi Product</h3>
 <table id="example1" class="table table-bordered table-striped">
   <thead>
@@ -77,7 +66,7 @@
       <td><?php echo $product_h->title ;?></td>
       <td><?php echo $product_h->deskripsi ;?></td>
       <td>
-        <a href="<?php echo base_url('admin/edit_product_h/'); ?>" >
+        <a href="<?php echo base_url('master/edit_product_h/'); ?>" >
            <button type="button" class="btn btn-outline-primary btn-sm">
               <i class="fa fa-edit ">Edit</i>
             </button>
@@ -119,12 +108,12 @@
                     <td><img src="<?php echo base_url('assets/img/product/'.$row->gambar);?>" alt="Finza" style="height:150px;widht:150px;"></td>
                     <td><?php echo $row->title ;?></td>
                     <td>
-                      <a href="<?php echo base_url('admin/edit_product/'.$row->id); ?>" >
+                      <a href="<?php echo base_url('master/edit_product/'.$row->id); ?>" >
                          <button type="button" class="btn btn-outline-primary btn-sm">
                             <i class="fa fa-edit ">Edit</i>
                           </button>
                       </a>
-                       <a href="<?php echo base_url('admin/del_product/'.$row->id);?>" onclick="javascript: return confirm('Anda yakin hapus ?')"  >
+                       <a href="<?php echo base_url('master/del_product/'.$row->id);?>" onclick="javascript: return confirm('Anda yakin hapus ?')"  >
                          <button type="button" class="btn btn-outline-primary btn-sm">
                             <i class="fa fa-trash">Hapus</i>
                           </button>

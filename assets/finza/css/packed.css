@@ -663,7 +663,7 @@ footer .extra-small-icon li:last-child,footer .small-icon li:last-child,footer .
 .large-icon li{margin:0 10px}
 .extra-large-icon li{margin:0 12px}
 .extra-small-icon a{font-size:14px;width:30px;height:30px;line-height:29px}
-.small-icon a{font-size:16px;width:100px;height:30px;line-height:30px;display:inline-block;margin:2px;text-align:center;border:1px solid transparent;border-radius:50px}
+.small-icon a{font-size:16px;width:200px;height:30px;line-height:30px;display:inline-block;margin:2px;text-align:center;border:1px solid transparent;border-radius:50px}
 .medium-icon a{font-size:20px;width:40px;height:40px;line-height:40px;display:inline-block;margin:5px;text-align:center;border:1px solid transparent;border-radius:50px}
 .large-icon a{font-size:24px;width:60px;height:60px;line-height:60px}
 .extra-large-icon a{font-size:30px;width:70px;height:70px;line-height:68px}

@@ -57,7 +57,7 @@ class Admin extends CI_Controller
 				$this->security_models->get_security();
 				$id 											= 1;
 				$data['admin']						= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['jumlah_pesan']			= $this->admin_models->jumlah_pesan();
+				$data['jumlah_orderan']			= $this->admin_models->jumlah_orderan();
 				$data['script_top']    		= 'admin/script_top';
 				$data['script_bottom']  	= 'admin/script_btm';
 				$data['admin_nav']				= 'admin/admin_nav';
@@ -102,7 +102,7 @@ class Admin extends CI_Controller
 				$this->load->view('admin/home', $data);
 			}
 
-			public function edit_heading_pro($id)
+			public function edit_heading_pro()
 			{
 				$this->security_models->get_security();
 				$deskripsi  	= $this->input->post('deskripsi');
@@ -314,230 +314,10 @@ class Admin extends CI_Controller
     		         		}
 			}
 
-// ------------------------------------------- mockup-------------------------------------------------------------------------///
-			public function mockup()
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['table']				= $this->admin_models->get_mockup_des()->result();
-				$data['mockup']				= $this->db->get_where('mockup', array('id' => $id))->row();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Mockup';
-				$data['content'] 			= 'admin/mockup';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function mockup2()
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['table']				= $this->admin_models->get_mockup_ex()->result();
-				
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Example Mockup';
-				$data['content'] 			= 'admin/mockup2';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function download()
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['table']				= $this->admin_models->get_link()->result();
-				
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Apps Link Download';
-				$data['content'] 			= 'admin/link_download';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			// action
-
-			public function edit_mockup()
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['table']				= $this->admin_models->get_mockup_des()->result();
-				$data['mockup']				= $this->db->get_where('mockup', array('id' => $id))->row();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Mockup';
-				$data['content'] 			= 'admin/action/edit_mockup';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function edit_mockup_pro()
-			{
-				$this->security_models->get_security();
-				$judul  		= $this->input->post('judul');
-				$deskripsi		= $this->input->post('deskripsi');
-				$id 			= $this->input->post('id');
-				$this->admin_models->update_mockup($judul, $deskripsi, $id);
-				$this->session->set_flashdata('info', 'data berhasil di Update!');				
-				redirect('admin/mockup');	
-			}
-
-			public function edit_gambar_mockup()
-			{
-				$this->security_models->get_security();
-				$gambar2 = $this->input->post('gambar2');
-				$config =  array(
-                  'upload_path'     => "./assets/img/",
-                  'allowed_types'   => "gif|jpg|png|jpeg",
-                  'encrypt_name'    => False, 
-                                   );
-                  $this->upload->initialize($config);
-                  $this->load->library('upload',$config);
-
-       				 if ( ! $this->upload->do_upload('gambar')) 
-       				 		{
-	       				 		 $this->session->set_flashdata('info','gambar gagal di Update');
-	                              redirect('admin/mockup');
-       				 		} else {
-
-       				 			$upload_data  	=$this->upload->data();
-                                $nama_file    	=$upload_data['file_name'];
-                                $ukuran_file  	=$upload_data['file_size'];
-                                $gambar 		=$this->input->post('gambar');
-                          		unlink('assets/img/'.$gambar2);
-                                $this->admin_models->edit_gambar_mockup($nama_file); 
-                                $this->session->set_flashdata('info','gambar berhasil di update');
-                                redirect('admin/mockup');
-    		         		}
-			}
-
-			public function edit_mockup_des($id)
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id2 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id2))->row();
-				$data['table']				= $this->admin_models->get_mockup_des()->result();
-				$data['mockup']				= $this->db->get_where('mockup_des', array('id' => $id))->row();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Mockup';
-				$data['content'] 			= 'admin/action/edit_mockup_des';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function edit_mockupd_pro()
-			{
-				$this->security_models->get_security();
-				$icon			= $this->input->post('icon'); 
-				$judul  		= $this->input->post('judul');
-				$deskripsi		= $this->input->post('deskripsi');
-				$id 			= $this->input->post('id');
-				$this->admin_models->update_mockup_des($icon, $judul, $deskripsi, $id);
-				$this->session->set_flashdata('info', 'data berhasil di Update!');				
-				redirect('admin/mockup');	
-			}
-
-			public function edit_exmp_m($id)
-			{
-				$this->security_models->get_security();
-				$id2 						= 1;
-				$data['nav_top']			= 'front';
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id2))->row();
-				$data['table']				= $this->admin_models->get_mockup_des()->result();
-				$data['mockup']				= $this->db->get_where('app_screenshoot', array('id' => $id))->row();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Mockup';
-				$data['content'] 			= 'admin/action/edit_exmp_m';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function edit_exmp_pro()
-			{
-				$this->security_models->get_security();
-				$gambar2 = $this->input->post('gambar2');
-				$id 	 = $this->input->post('id');
-				$config =  array(
-                  'upload_path'     => "./assets/img/",
-                  'allowed_types'   => "gif|jpg|png|jpeg",
-                  'encrypt_name'    => False, 
-                                   );
-                  $this->upload->initialize($config);
-                  $this->load->library('upload',$config);
-
-       				 if ( ! $this->upload->do_upload('gambar')) 
-       				 		{
-	       				 		 $this->session->set_flashdata('info','gambar gagal di Update');
-	                              redirect('admin/mockup2');
-       				 		} else {
-
-       				 			$upload_data  	=$this->upload->data();
-                                $nama_file    	=$upload_data['file_name'];
-                                $ukuran_file  	=$upload_data['file_size'];
-                                $gambar 		=$this->input->post('gambar');
-                          		unlink('assets/img/'.$gambar2);
-                                $this->admin_models->edit_exmp_pro($nama_file, $id); 
-                                $this->session->set_flashdata('info','gambar berhasil di update');
-                                redirect('admin/mockup2');
-    		         		}
-			}
-
-			public function edit_link($id)
-			{
-
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id2 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id2))->row();
-				$data['table']				= $this->admin_models->get_mockup_des()->result();
-				$data['mockup']				= $this->db->get_where('download', array('id' => $id))->row();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Mockup';
-				$data['content'] 			= 'admin/action/edit_link';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function edit_link_pro()
-			{
-				$this->security_models->get_security();
-				$nama		= $this->input->post('nama'); 
-				$link  		= $this->input->post('link');
-				$id 		= $this->input->post('id');
-				$this->admin_models->edit_link_pro($nama, $link, $id);
-				$this->session->set_flashdata('info', 'data berhasil di Update!');				
-				redirect('admin/download');	
-			}
 
 
+		
+		
 // ---------------------------------------------deskripsi 1 ------------- ----------------------------------------------------------//\
 			public function deskripsi1()
 			{
@@ -720,228 +500,6 @@ class Admin extends CI_Controller
 				$this->session->set_flashdata('info', 'data berhasil di Update!');				
 				redirect('admin/about');
 			}
-
-// ---------------------------------------------deskripsi 2 ------------- ----------------------------------------------------------//
-			public function deskripsi2()
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['des1']				= $this->db->get_where('deksripsi2', array('id' => $id))->row();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Deskripsi Section 2';
-				$data['content'] 			= 'admin/deskripsi2';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function edit_des2()
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Deskripsi Section 2';
-				$data['content'] 			= 'admin/action/edit_des2';
-				$data['edit_head_id']		= $this->db->get_where('deksripsi2', array('id' => $id))->row();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function edit_des1_pro2($id)
-			{
-				$this->security_models->get_security();
-				$deskripsi  = $this->input->post('deskripsi');
-				$title		= $this->input->post('title');
-				$id 		= $this->input->post('id');
-				$this->admin_models->update_des2($deskripsi, $title, $id);
-				$this->session->set_flashdata('info', 'data berhasil di Update!');				
-				redirect('admin/deskripsi2');	
-			}
-
-			public function edit_gambar_des2()
-			{
-				$this->security_models->get_security();
-				$gambar2 = $this->input->post('gambar2');
-				$config =  array(
-                  'upload_path'     => "./assets/img/web/",
-                  'allowed_types'   => "gif|jpg|png|jpeg",
-                  'encrypt_name'    => False, 
-                                   );
-                  $this->upload->initialize($config);
-                  $this->load->library('upload',$config);
-
-       				 if ( ! $this->upload->do_upload('gambar')) 
-       				 		{
-	       				 		 $this->session->set_flashdata('info','gambar gagal di Update');
-	                              redirect('admin/deskripsi2');
-       				 		} else {
-
-       				 			$upload_data  	=$this->upload->data();
-                                $nama_file    	=$upload_data['file_name'];
-                                $ukuran_file  	=$upload_data['file_size'];
-                                $gambar 		=$this->input->post('gambar');
-                          		unlink('assets/img/web/'.$gambar2);
-                                $this->admin_models->edit_gambar_des2($nama_file); 
-                                $this->session->set_flashdata('info','gambar berhasil di update');
-                                redirect('admin/deskripsi2');
-    		         		}
-			}
-// ---------------------------------------------product ------------- ----------------------------------------------------------//
-
-			public function product()
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['product_h']			= $this->db->get_where('product_h', array('id' => $id))->row();
-				$data['table']				= $this->admin_models->get_product()->result();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Product';
-				$data['content'] 			= 'admin/product';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function edit_product_h()
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['product_h']			= $this->db->get_where('product_h', array('id' => $id))->row();
-				$data['table']				= $this->admin_models->get_product()->result();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Product';
-				$data['content'] 			= 'admin/action/edit_product_h';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function edit_product_h_p()
-			{
-				$this->security_models->get_security();
-				$deskripsi  = $this->input->post('deskripsi');
-				$title		= $this->input->post('title');
-				$id 		= $this->input->post('id');
-				$this->admin_models->update_product_h($deskripsi, $title, $id);
-				$this->session->set_flashdata('info', 'data berhasil di Update!');				
-				redirect('admin/product');
-			}
-
-			public function add_product()
-			{
-				$this->security_models->get_security();
-				$config =  array(
-					'upload_path'     => "./assets/img/product/",
-					'allowed_types'   => "gif|jpg|png|jpeg",
-					'encrypt_name'    => False, 
-													 );
-					$this->upload->initialize($config);
-					$this->load->library('upload',$config);
-
-				if ( ! $this->upload->do_upload('gambar')) 
-						{
-							 $this->session->set_flashdata('info','data gagal di tambah');
-												redirect('admin/heading');
-						} else {
-
-							$upload_data  	=$this->upload->data();
-							$nama_file    	=$upload_data['file_name'];
-							$ukuran_file  	=$upload_data['file_size'];
-							$deskripsi  		=$this->input->post('deskripsi');
-							$title					=$this->input->post('title');
-							
-				
-							$this->admin_models->add_product($nama_file, $title, $deskripsi); 
-							$this->session->set_flashdata('info','data berhasil di tambah');
-							redirect('admin/product');
-						}    
-			}
-
-			public function edit_product($id)
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id2 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id2))->row();
-				$data['product']			= $this->db->get_where('product', array('id' => $id))->row();
-				$data['table']				= $this->admin_models->get_product()->result();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Product';
-				$data['content'] 			= 'admin/action/edit_product';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function edit_gambar_product()
-			{
-				$this->security_models->get_security();
-				$gambar2 = $this->input->post('gambar2');
-				$config =  array(
-                  'upload_path'     => "./assets/img/product/",
-                  'allowed_types'   => "gif|jpg|png|jpeg",
-                  'encrypt_name'    => False, 
-                                   );
-                  $this->upload->initialize($config);
-                  $this->load->library('upload',$config);
-
-       				 if ( ! $this->upload->do_upload('gambar')) 
-       				 		{
-	       				 		 $this->session->set_flashdata('info','gambar gagal di Update');
-	                              redirect('admin/heproductading');
-       				 		} else {
-
-       				 			$upload_data  	=$this->upload->data();
-										$nama_file    	=$upload_data['file_name'];
-										$ukuran_file  	=$upload_data['file_size'];
-										$gambar 				=$this->input->post('gambar');
-										$id 						=$this->input->post('id');
-										unlink('assets/img/product/'.$gambar2);
-										$this->admin_models->edit_img_product($nama_file, $id); 
-										$this->session->set_flashdata('info','gambar berhasil di update');
-										redirect('admin/product');
-    		         		}
-			}
-
-			public function edit_product_p()
-			{
-				$this->security_models->get_security();
-				$deskripsi  = $this->input->post('deskripsi');
-				$title		= $this->input->post('title');
-				$price 		= $this->input->post('price');
-				$id 		= $this->input->post('id');
-				
-				$this->admin_models->edit_product_p($deskripsi, $title, $price, $id);
-				$this->session->set_flashdata('info', 'data berhasil di Update!');				
-				redirect('admin/product');
-			}
-
-			public function del_product($id)
-			{
-				$this->security_models->get_security();
-				$this->admin_models->del_product($id);
-				$this->session->set_flashdata('info','data berhasil di hapus');
-				redirect('admin/product');
-
-			}
 // ---------------------------------------------faq ------------- ----------------------------------------------------------//
 
 			public function faq()
@@ -1080,10 +638,10 @@ class Admin extends CI_Controller
 				redirect('admin/partners');
 			}
 
-			public function pesan()
+			public function orderan()
 			{
 				$this->security_models->get_security();
-				$data['nav_top']			= 'pesan';
+				$data['nav_top']			= 'orderan';
 				$id 						= 1;
 				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
 				$data['table']				= $this->admin_models->get_orderan()->result();
@@ -1091,25 +649,25 @@ class Admin extends CI_Controller
 				$data['script_bottom']  	= 'admin/script_btm';
 				$data['admin_nav']			= 'admin/admin_nav';
 				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Pesan';
-				$data['content'] 			= 'admin/pesan';
+				$data['sub_judul'] 			= 'orderan';
+				$data['content'] 			= 'admin/orderan';
 				$data['content_head']		= $this->admin_models->get_heading()->result();
 				$this->load->view('admin/home', $data);
 			}
 
-			public function baca_pesan($id)
+			public function detail_orderan($id)
 			{
 				$this->security_models->get_security();
-				$data['nav_top']			= 'pesan';
+				$data['nav_top']			= 'orderan';
 				$id2 						= 1;
 				$data['admin']				= $this->db->get_where('admin', array('id' => $id2))->row();
 				$data['baca']				= $this->db->get_where('orderan', array('id' => $id))->row();
 				$data['script_top']    		= 'admin/script_top';
 				$data['script_bottom']  	= 'admin/script_btm';
 				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Pesan';
-				$data['content'] 			= 'admin/baca_pesan';
+				$data['judul'] 				= 'Orderan';
+				$data['sub_judul'] 			= 'orderan';
+				$data['content'] 			= 'admin/detail_orderan';
 				$data['content_head']		= $this->admin_models->get_heading()->result();
 				$this->load->view('admin/home', $data);
 			}
@@ -1161,140 +719,7 @@ class Admin extends CI_Controller
 				$this->session->set_flashdata('info','data berhasil di hapus');
                 redirect('admin/heading'); 
 			}
-
-			public function tb_member()
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'member';
-				$id 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['table']				= $this->admin_models->get_member()->result();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Member';
-				$data['content'] 			= 'admin/tb_member';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function add_member()
-			{
-				$this->security_models->get_security();
-				$config =  array(
-                  'upload_path'     => "./assets/img/member/",
-                  'allowed_types'   => "gif|jpg|png|jpeg",
-                  'encrypt_name'    => False, 
-                                   );
-                  $this->upload->initialize($config);
-                  $this->load->library('upload',$config);
-
-       				 if ( ! $this->upload->do_upload('gambar')) 
-       				 		{
-	       				 		 $this->session->set_flashdata('info','Foto Harus Dimasukkan');
-	                              redirect('admin/tb_member');
-       				 		} else {
-
-       				 			$upload_data  	=$this->upload->data();
-                                $nama_file    	=$upload_data['file_name'];
-                                $ukuran_file  	=$upload_data['file_size'];
-                                $nama         	=$this->input->post('nama');
-                                $hp     		=$this->input->post('hp');
-                                $email     		=$this->input->post('email');
-                                $alamat     	=$this->input->post('alamat');
-                                $username     	=$this->input->post('username');
-                                $pass     		=$this->input->post('password');
-                                $password     	=md5($pass);
-                                $level			=2;
-                                $tgl 			=date('d-M-y, g:i a');
-                                $usernn 		=str_replace(" ","", $username);
-                                $uniq			=uniqid();
-
-
-                               
-                          
-                                $this->admin_models->add_member($nama_file, $nama, $hp, $email, $alamat, $usernn, $password, $level, $tgl, $uniq); 
-                                $this->session->set_flashdata('info','data berhasil di tambah');
-                                redirect('admin/tb_member');
-    		         		}    
-			}
-
-			public function edit_member($id)
-			{
-				$this->security_models->get_security();
-				$data['nav_top']			= 'front';
-				$id_a 						= 1;
-				$data['admin']				= $this->db->get_where('admin', array('id' => $id_a))->row();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
-				$data['judul'] 				= 'FRONT DESIGN';
-				$data['sub_judul'] 			= 'Edit Member';
-				$data['content'] 			= 'admin/action/edit_member';
-				$data['edit']				= $this->db->get_where('member', array('id' => $id))->row();
-				$this->load->view('admin/home', $data);
-			}
-
-			public function edit_member_pro()
-			{
-				$this->security_models->get_security();
-				$nama         	=$this->input->post('nama');
-                $hp     		=$this->input->post('hp');
-                $email     		=$this->input->post('email');
-                $alamat     	=$this->input->post('alamat');
-                $username     	=$this->input->post('username');
-                $pass     		=$this->input->post('password');
-                $password     	=md5($pass);
-                $id 			=$this->input->post('id');
-                $usernn 		=str_replace(" ","", $username);
-
-                $this->admin_models->update_member($nama, $hp, $email, $alamat, $usernn, $password, $id); 
-                $this->session->set_flashdata('info','data berhasil di tambah');
-                redirect('admin/tb_member');
-
-
-			}
-
-			public function edit_member_foto()
-			{
-				$this->security_models->get_security();
-				$gambar2 = $this->input->post('gambar2');
-				$config =  array(
-                  'upload_path'     => "./assets/img/member/",
-                  'allowed_types'   => "gif|jpg|png|jpeg",
-                  'encrypt_name'    => False, 
-                                   );
-                  $this->upload->initialize($config);
-                  $this->load->library('upload',$config);
-
-       				 if ( ! $this->upload->do_upload('gambar')) 
-       				 		{
-	       				 		 $this->session->set_flashdata('info','gambar gagal di Update');
-	                              redirect('admin/tb_member');
-       				 		} else {
-
-       				 			$upload_data  	=$this->upload->data();
-                                $nama_file    	=$upload_data['file_name'];
-                                $ukuran_file  	=$upload_data['file_size'];
-                                $gambar 		=$this->input->post('gambar');
-                                $id 			=$this->input->post('id');
-                          		unlink('assets/img/member/'.$gambar2);
-                                $this->admin_models->edit_member_foto($nama_file, $id); 
-                                $this->session->set_flashdata('info','gambar berhasil di update');
-                                redirect('admin/tb_member');
-    		         		}
-			}
-
-			public function del_member($id, $foto)
-			{
-				$this->security_models->get_security();
-				$this->admin_models->del_member($id);
-				unlink('assets/img/member/'.$foto);
-				$this->session->set_flashdata('info', 'data berhasil di hapus!');				
-				redirect('admin/tb_member');
-
-			}
+		
 
 			public function excel_orderan()
 			{
@@ -1427,61 +852,5 @@ class Admin extends CI_Controller
 				    $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
 				    $write->save('php://output');
 			}
-
-			public function cetak_member($id)
-			{
-				$this->security_models->get_security();
-				$profile			= $this->db->get_where('member', array('id' => $id))->row();
-				
-				
-
-				$pdf = $this->pdf->load_kartu_nama();
-		        // membuat halaman baru
-		        $pdf->AddPage($pdf);
-		        // setting jenis font yang akan digunakan
-		     
-		       // $pdf->SetFont('Arial','B',10);
-		        // mencetak string 
-		        
-		       
-		        // Memberikan space kebawah agar tidak terlalu rapat
-		        $pdf->Cell(1,3,'',0,1);
-
-		   
-		        $pdf->Cell(20,5,'',0,0, 'L');
-		        $pdf->SetFont('Arial','B',10);
-		        $pdf->Cell(5,5,''.$profile->nama,0,1, 'L');
-
-		       	$pdf->Cell(20,5,'',0,0, 'L');
-		        $pdf->SetFont('Arial','',9);
-		        $pdf->Cell(5,5,''.$profile->email,0,1, 'L');
-
-		       
-		        
-		      
-		       	$pdf->Cell(20,5,'',0,0, 'L');
-		        $pdf->SetFont('Arial','',9);
-		        $pdf->Cell(5,5,''.$profile->hp,0,1, 'L');
-
-				$pdf->Cell(20,5,'',0,0, 'L');				
-		       	$pdf->SetFont('Arial','',9);
-		        $pdf->Cell(5,5,''.$profile->alamat,0,1, 'L');
-		        $pdf->cell(5);
-		        $pdf->Image(base_url('assets/img/icon/star.png'),25, 1);
-		        $pdf->Image(base_url('assets/img/icon/email.png'),30, 25, 4, 4);
-		        $pdf->Image(base_url('assets/img/icon/phone.png'),31, 30, 3, 3);
-		        $pdf->Image(base_url('assets/img/icon/lokasi.png'),30, 35, 4, 4);
-		        $pdf->Image(base_url('assets/img/member/'.$profile->foto),10, 17, 20, 30);
-		       // $pdf->Image(base_url('assets/img/icon/footer.png'),0, 0, 90, 55);
-		        // $pdf->Image(base_url('assets/img/jambore.png'),75, 5,25, 25);
-
-		        
-		        // $pdf->Image(base_url('assets/img/ktp/'.$profile->gambar_profile),35, 50,35, 40);
-
-		       
-		        $pdf->Output();
-			}
-
-
 
 		}

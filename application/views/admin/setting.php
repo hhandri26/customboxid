@@ -120,15 +120,6 @@
     </div>
 
 
-<?php if($this->session->flashdata('info')): ?>        
-  <div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h4><i class="icon fa fa-check"></i> Info!</h4>
-    <?php echo $this->session->flashdata('info'); ?>
-  </div>
-<?php endif; ?>
-
-
 <!-- modal ganti logo -->
 <div class="modal fade" id="exampleModal34" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
    aria-hidden="true">

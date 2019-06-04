@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
       <!--form-->
-        <?php echo form_open_multipart('admin/edit_gambar_product/'); ?>
+        <?php echo form_open_multipart('master/edit_gambar_product/'); ?>
          <div class="form-group">
           <img class="img-thumbnail" width="200" height="200" id="profile-pre" 
           src="<?php echo base_url('assets/img/product/'.$product->gambar);?>" alt="your image" /><br><br>
@@ -35,7 +35,7 @@
   <div class="box box-default">
     <div class="box-body">
       <!--form-->
-      <?php echo form_open('admin/edit_product_p'); ?>
+      <?php echo form_open('master/edit_product_p'); ?>
          <?php if($this->session->flashdata('info')): ?>
           <div id="error"><?php echo $this->session->flashdata('info'); ?></div>
         <?php endif; ?>

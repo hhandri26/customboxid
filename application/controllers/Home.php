@@ -10,6 +10,7 @@ class Home extends CI_Controller
 				$this->load->library('form_validation');
 				$this->load->model('home_models');
 				$this->load->model('admin_models');
+				$this->load->model('master_models');
 				$this->load->model('pengunjung');
 				
 
@@ -26,15 +27,11 @@ class Home extends CI_Controller
 				$data['des1']				= $this->db->get_where('deskripsi1', array('id' => $id))->row();
 				$data['work_h']				= $this->db->get_where('work_h', array('id' => $id))->row();
 				$data['work']				= $this->admin_models->get_work()->result();
-				$data['des2']				= $this->db->get_where('deksripsi2', array('id' => $id))->row();
 				$data['product_h']			= $this->db->get_where('product_h', array('id' => $id))->row();
-				$data['table']				= $this->admin_models->get_product()->result();
+				$data['table']				= $this->master_models->get_product()->result();
 				$data['table2']				= $this->home_models->get_faq()->result();
 				$data['table3']				= $this->admin_models->get_partners()->result();
 				$data['gambar']				= $this->home_models->get_gambar()->result();
-				
-
-
 				$data['script_top']    		= 'home_navigasi/script_top';
 				$data['script_bottom']  	= 'home_navigasi/script_bottom';
 				$data['header'] 			= 'home_navigasi/header';
@@ -52,18 +49,14 @@ class Home extends CI_Controller
 
 			public function error_page()
 			{
-					$id 						= 1;
+				$id 						= 1;
 				$data['info']				= $this->db->get_where('info', array('id' => $id))->row();
 				$data['seo']				= $this->db->get_where('seo', array('id' => $id))->row();
 				$data['heading']			= $this->db->get_where('heading', array('id' => $id))->row();
-				
-
-
 				$data['script_top']    		= 'home_navigasi/script_top';
 				$data['script_bottom']  	= 'home_navigasi/script_bottom';
 				$data['header'] 			= 'home_navigasi/header';
 				$data['footer'] 			= 'home_navigasi/footer';
-					
 				$data['nav']		 		= 'home';
 				$data['event']				= 'home_navigasi/event';
 				$data['counter']			= $this->pengunjung->get_pengunjung();

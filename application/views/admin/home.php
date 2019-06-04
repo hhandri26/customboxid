@@ -66,6 +66,20 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
+              <?php if($this->session->flashdata('info')): ?>        
+                  <div class="alert alert-success alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h4><i class="icon fa fa-check"></i> Info!</h4>
+                  <?php echo $this->session->flashdata('info'); ?>
+                  </div>
+              <?php endif; ?>
+              <?php if($this->session->flashdata('danger')): ?>  
+                  <div class="alert alert-danger alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h4><i class="icon fa fa-ban"></i> opps!</h4>
+                  <?php echo $this->session->flashdata('danger'); ?>
+                  </div>
+                  <?php endif; ?>
               <?php $this->load->view($content); ?>
             </div>
           </div>

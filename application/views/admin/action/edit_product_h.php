@@ -2,7 +2,7 @@
   <div class="box box-default">
     <div class="box-body">
       <!--form-->
-      <?php echo form_open('admin/edit_product_h_p'); ?>
+      <?php echo form_open('master/edit_product_h_p'); ?>
          <?php if($this->session->flashdata('info')): ?>
           <div id="error"><?php echo $this->session->flashdata('info'); ?></div>
         <?php endif; ?>

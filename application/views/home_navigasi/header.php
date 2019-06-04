@@ -1,3 +1,7 @@
+<?php 
+  $active = "class='active'";
+  $class = 'active'; 
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -58,7 +62,7 @@
             <!-- start logo -->
             <div class="row">
                 <div class="col-md-2 col-xs-5">
-                    <a href="#." title="Logo" class="logo scroll">
+                    <a href="<?php echo base_url();?>" title="Logo" class="logo scroll">
                         <img src="<?php echo base_url('assets/img/logo/'.$info->logo);?>" class="logo-dark default" alt="logo">
                         <img src="<?php echo base_url('assets/img/logo/'.$info->logo);?>" alt="logo" class="logo-light">
                     </a>
@@ -74,22 +78,22 @@
                     <div class="navbar-collapse collapse pull-right" id="navbar-collapse-toggle-1">
                         <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal" data-in="fadeIn" data-out="fadeOut">
                             <!-- start menu item -->
-                            <li class="active">
-                                <a href="index.html">Home</a>
+                            <li <?php echo ($nav == 'home')? $active :""; ?>>
+                                <a href="<?php echo base_url();?>">Home</a>
                             </li>
                             <li>
                                 <a href="#product" class="scroll">Product</a>
                             </li>
-                            <li>
+                            <li  <?php echo ($nav == 'gallery')? $active :""; ?>>
                                 <a href="#gallery" class="scroll">Gallery</a>
                             </li>
                             <li>
                                 <a href="#faq" class="scroll">Cara Pemesanan</a>
                             </li>
-                            <li>
+                            <li  <?php echo ($nav == 'custom box')? $active :""; ?>>
                                 <a href="#" class="scroll">Custom Box</a>
                             </li>
-                            <li>
+                            <li  <?php echo ($nav == 'bukti transfer')? $active :""; ?>>
                                 <a href="#" class="scroll">Upload Bukti Transfer</a>
                             </li>
 

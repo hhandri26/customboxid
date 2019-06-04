@@ -1,11 +1,3 @@
-  <?php if($this->session->flashdata('info')): ?>        
-  <div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h4><i class="icon fa fa-check"></i> Info!</h4>
-    <?php echo $this->session->flashdata('info'); ?>
-  </div>
-<?php endif; ?>
- 
   <div class="col-md-6">
           <!-- Box Comment -->
           <div class="box box-widget">

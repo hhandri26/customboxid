@@ -1,10 +1,3 @@
-<?php if($this->session->flashdata('info')): ?>        
-  <div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h4><i class="icon fa fa-check"></i> Info!</h4>
-    <?php echo $this->session->flashdata('info'); ?>
-  </div>
-<?php endif; ?>
 <section class="content">
   <div class="row">
 
@@ -13,7 +6,7 @@
         <span class="info-box-icon bg-blue"><i class="fa fa-envelope"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Orderan</span>
-          <span class="info-box-number"><?php echo $jumlah_pesan;?></span>
+          <span class="info-box-number"><?php echo $jumlah_orderan;?></span>
         </div>
       </div>
     </div>
