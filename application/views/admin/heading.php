@@ -31,9 +31,6 @@
             <label for="judul" class="col-form-label">Deskripsi</label>
             <input type="text" class="form-control"  name="deskripsi" required>
           </div>
-
-       
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -44,19 +41,12 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget)
-  var recipient = button.data('whatever')
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-})
-</script>
+
 
 <!-- Table Dosen -->
-
- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Tambah Slideshow</button><br><br>
+<a href="javascript:;" class="add-modal btn btn-info btn-sm" data-toggle ="modal" data-target="#exampleModal">
+     <i class="fa fa-plus"></i>
+</a>
 <div class="">
     <!-- table dosen -->
       <div class="box">

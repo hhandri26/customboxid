@@ -110,3 +110,4 @@
         </tbody>
     </table>
 </div>
+<script src="<?php echo base_url();?>assets/custom/js/master_harga.js"></script>

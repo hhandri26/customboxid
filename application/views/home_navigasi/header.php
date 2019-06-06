@@ -93,8 +93,8 @@
                             <li  <?php echo ($nav == 'custom box')? $active :""; ?>>
                                 <a href="#" class="scroll">Custom Box</a>
                             </li>
-                            <li  <?php echo ($nav == 'bukti transfer')? $active :""; ?>>
-                                <a href="#" class="scroll">Upload Bukti Transfer</a>
+                            <li  <?php echo ($nav == 'bukti_transfer')? $active :""; ?>>
+                                <a href="<?php echo base_url('upload-bukti-transfer');?>">Upload Bukti Transfer</a>
                             </li>
 
                             <li>

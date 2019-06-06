@@ -13,10 +13,17 @@ class Send_email_models extends CI_Model
         $config['newline'] 		= "\r\n";
         $ci->email->initialize($config);
         $ci->email->from($info->email);
-        $ci->email->attach($file,'attachment', 'Invoice','application/pdf');
+        if($file==''){
+        }else{
+            $ci->email->attach($file,'attachment', 'Invoice','application/pdf');
+        }
         $ci->email->to($data['email']);
         $ci->email->subject('Invoice Customboxid');
-        $ci->email->message($info->pesan_invoice);
+        if($data['dari']=='admin'){
+            $ci->email->message($info->pesan_vertifikasi);
+        }else{
+            $ci->email->message($info->pesan_invoice);
+        }
         if ($this->email->send()){
 
         }else{

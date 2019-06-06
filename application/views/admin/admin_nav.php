@@ -87,22 +87,6 @@
       </ul>
     </li>
 
-    <!-- bukti transfer -->
-    <li class="treeview <?php echo ($nav_top == 'transfer')? $class :""; ?>">
-      <a href="#">
-        <i class="fa fa-money"></i>
-        <span>Bukti Transfer</span>
-        <span class="pull-right-container">
-          <i class="fa fa-angle-left pull-right"></i>
-        </span>
-      </a>
-      <ul class="treeview-menu">
-        <li <?php echo (basename($_SERVER['PHP_SELF']) == 'transfer')? $active :""; ?>>
-          <a href="#"><i class="fa fa-copy"></i> Table </a>
-        </li>
-      </ul>
-    </li>
-
     <!-- setting & Contact -->
     <li class="treeview <?php echo ($nav_top == 'setting')? $class :""; ?>">
       <a href="#">

@@ -11,9 +11,9 @@
           <th>Nama</th>
           <th>Email</th>
           <th>No HP</th>
-          <th>Pesanan</th>
-          <th>Detail</th>
+          <th>Box</th>
           <th>Waktu</th>
+          <th>Status</th>
           <th>Aksi</th>
         </tr>
       </thead>
@@ -24,9 +24,19 @@
           <td><?php echo $row->nama ?></td>
           <td><?php echo $row->email ?></td>
           <td><?php echo $row->hp ?></td>
-          <td><?php echo character_limiter($row->orderan,10) ?></td>
-           <td><?php echo character_limiter($row->detail,10) ?></td>
+          <td><?php echo $row->product ?></td>
           <td><?php echo $row->waktu ?></td>
+          <td>
+              <?php if($row->status =='1'){?>
+                <button class="btn btn-danger">New Order</button>
+              <?php }elseif($row->status=='2'){?>
+                <button class="btn btn-warning">Progress</button>
+              <?php }elseif($row->status=='3'){?>
+                <button class="btn btn-info">Done</button>
+              <?php }else{?>
+                <button class="btn btn-danger">Reject</button>
+              <?php };?>
+          </td>
           <td>
             <a href="<?php echo base_url('admin/detail_orderan/'.$row->id); ?>" >
                <button type="button" class="btn btn-outline-primary btn-sm">

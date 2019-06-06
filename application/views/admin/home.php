@@ -79,7 +79,7 @@
                   <h4><i class="icon fa fa-ban"></i> opps!</h4>
                   <?php echo $this->session->flashdata('danger'); ?>
                   </div>
-                  <?php endif; ?>
+              <?php endif; ?>
               <?php $this->load->view($content); ?>
             </div>
           </div>

@@ -42,15 +42,7 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget)
-  var recipient = button.data('whatever')
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-})
-</script>
+
 <h3>heading deskripsi Product</h3>
 <table id="example1" class="table table-bordered table-striped">
   <thead>
@@ -87,7 +79,9 @@
 
 <div class="">
       <div class="box">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Tambah Product</button>
+        <a href="javascript:;" class="add-modal btn btn-info btn-sm" data-toggle ="modal" data-target="#exampleModal">
+            <i class="fa fa-plus"></i>
+        </a>
             <div class="box-header">
               <h3 class="box-title">table product</h3>
             </div>

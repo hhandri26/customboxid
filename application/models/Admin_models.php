@@ -185,6 +185,7 @@
 		{
 			$this->db->select('*');
 			$this->db->from('orderan');
+			$this->db->order_by('id','DESC');
 			return $this->db->get();
 		}
 
@@ -232,6 +233,13 @@
 		{
 			$this->db->where('id',$id);
 			return $this->db->delete('heading');
+		}
+
+		public function update_status_order($data)
+		{
+			$tb = array('status'=>$data['status']);
+			$this->db->where('id',$data['id']);
+			$this->db->update('orderan',$tb);
 		}
 	
 

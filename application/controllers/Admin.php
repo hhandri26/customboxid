@@ -15,6 +15,7 @@ class Admin extends CI_Controller
 				$this->load->model('load_setting');
 				$this->load->model('pengunjung');
 				$this->load->model('security_super');
+				$this->load->model('send_email_models');
 
 			}
 // ---------------------------------------------Admin Login & Logout -----------------------------------------------------------//
@@ -659,16 +660,16 @@ class Admin extends CI_Controller
 			{
 				$this->security_models->get_security();
 				$data['nav_top']			= 'orderan';
-				$id2 						= 1;
+				$id2 									= 1;
 				$data['admin']				= $this->db->get_where('admin', array('id' => $id2))->row();
-				$data['baca']				= $this->db->get_where('orderan', array('id' => $id))->row();
-				$data['script_top']    		= 'admin/script_top';
-				$data['script_bottom']  	= 'admin/script_btm';
-				$data['admin_nav']			= 'admin/admin_nav';
+				$data['baca']					= $this->db->get_where('orderan', array('id' => $id))->row();
+				$data['script_top']   = 'admin/script_top';
+				$data['script_bottom']= 'admin/script_btm';
+				$data['admin_nav']		= 'admin/admin_nav';
 				$data['judul'] 				= 'Orderan';
-				$data['sub_judul'] 			= 'orderan';
+				$data['sub_judul'] 		= 'orderan';
 				$data['content'] 			= 'admin/detail_orderan';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
+				$data['content_head']	= $this->admin_models->get_heading()->result();
 				$this->load->view('admin/home', $data);
 			}
 
@@ -851,6 +852,21 @@ class Admin extends CI_Controller
 				    header('Cache-Control: max-age=0');
 				    $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
 				    $write->save('php://output');
+			}
+
+			public function status_orderan()
+			{
+					$data = array(
+												'email'		=> $this->input->post('email'),
+												'id' 			=> $this->input->post('id'),
+												'status'	=> $this->input->post('status'),
+												'dari' 		=> 'admin'
+											);
+					$info           = $this->db->get_where('info', array('id' => '1'))->row();
+					$this->admin_models->update_status_order($data);
+					//$this->send_email_models->send($data,$info,$file='');
+					$this->session->set_flashdata('info','status berhasil di ubah');
+					redirect('admin/orderan');
 			}
 
 		}

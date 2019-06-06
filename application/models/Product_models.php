@@ -16,4 +16,19 @@ class Product_models extends CI_Model
         return $this->db->insert('orderan',$data);
     }
 
+    public function cari_inv($kode_invoice)
+    {
+        $this->db->select('*');
+        $this->db->where('no_pemesanan', $kode_invoice);
+        $this->db->from('orderan');
+        return $this->db->get();
+    }
+
+    public function upload_bukti_transfer($kode_invoice,$nama_file)
+    {
+        $data   = array('bukti_transfer'=>$nama_file );
+        $this->db->where('no_pemesanan',$kode_invoice);
+        $this->db->update('orderan',$data);
+    }
+
 }
