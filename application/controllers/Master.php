@@ -33,7 +33,6 @@ class Master extends CI_Controller
 				$data['judul'] 				= 'Master Product';
 				$data['sub_judul'] 		    = 'Product';
 				$data['content'] 			= 'admin/product';
-				$data['content_head']	    = $this->admin_models->get_heading()->result();
 				$this->load->view('admin/home', $data);
 			}
 
@@ -50,7 +49,6 @@ class Master extends CI_Controller
 				$data['judul'] 				= 'FRONT DESIGN';
 				$data['sub_judul'] 			= 'Product';
 				$data['content'] 			= 'admin/action/edit_product_h';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
 				$this->load->view('admin/home', $data);
 			}
 
@@ -106,7 +104,6 @@ class Master extends CI_Controller
 				$data['judul'] 				= 'FRONT DESIGN';
 				$data['sub_judul'] 			= 'Product';
 				$data['content'] 			= 'admin/action/edit_product';
-				$data['content_head']		= $this->admin_models->get_heading()->result();
 				$this->load->view('admin/home', $data);
 			}
 
@@ -164,7 +161,6 @@ class Master extends CI_Controller
 				$data['nav_top']			= 'master';
 				$id 						= 1;
 				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['product_h']		    = $this->db->get_where('product_h', array('id' => $id))->row();
 				$data['table']				= $this->master_models->get_ukuran()->result();
 				$data['script_top']         = 'admin/script_top';
 				$data['script_bottom']      = 'admin/script_btm';
@@ -172,7 +168,6 @@ class Master extends CI_Controller
 				$data['judul'] 				= 'Master Ukuran';
 				$data['sub_judul'] 		    = 'Ukuran';
 				$data['content'] 			= 'admin/master/master_ukuran';
-				$data['content_head']	    = $this->admin_models->get_heading()->result();
 				$this->load->view('admin/home', $data);
             }
 
@@ -206,7 +201,6 @@ class Master extends CI_Controller
                 $data['nav_top']			= 'master';
 				$id 						= 1;
 				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['product_h']		    = $this->db->get_where('product_h', array('id' => $id))->row();
 				$data['table']				= $this->master_models->get_qty()->result();
 				$data['script_top']         = 'admin/script_top';
 				$data['script_bottom']      = 'admin/script_btm';
@@ -214,7 +208,6 @@ class Master extends CI_Controller
 				$data['judul'] 				= 'Master Quantity';
 				$data['sub_judul'] 		    = 'Ukuran';
 				$data['content'] 			= 'admin/master/master_qty';
-				$data['content_head']	    = $this->admin_models->get_heading()->result();
 				$this->load->view('admin/home', $data);
             }
 
@@ -248,7 +241,6 @@ class Master extends CI_Controller
                 $data['nav_top']			= 'master';
 				$id 						= 1;
 				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['product_h']		    = $this->db->get_where('product_h', array('id' => $id))->row();
                 $data['table']				= $this->master_models->get_harga()->result();
                 $data['product']			= $this->master_models->get_product()->result();
                 $data['ukuran']				= $this->master_models->get_ukuran()->result();
@@ -260,7 +252,6 @@ class Master extends CI_Controller
 				$data['judul'] 				= 'Master Quantity';
 				$data['sub_judul'] 		    = 'Ukuran';
 				$data['content'] 			= 'admin/master/master_harga';
-				$data['content_head']	    = $this->admin_models->get_heading()->result();
 				$this->load->view('admin/home', $data);
             }
 
@@ -269,7 +260,7 @@ class Master extends CI_Controller
                 $id_product = $this->input->post('id_product');
                 $id_ukuran  = $this->input->post('id_ukuran');
                 $id_qty     = $this->input->post('id_qty');
-                $harga      = tr_replace(array('Rp.',' ','.'),'',$this->input->post('harga'));
+                $harga      = str_replace(array('Rp.',' ','.'),'',$this->input->post('harga'));
                 $berat      = $this->input->post('berat');
                 //cek kesamaan harga dengan product, qty, dan ukuran
                 if($this->master_models->cek_exst_harga($id_product,$id_ukuran, $id_qty)->result()){
@@ -287,7 +278,6 @@ class Master extends CI_Controller
                 $data['nav_top']			= 'master';
 				$id 						= 1;
 				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
-				$data['product_h']		    = $this->db->get_where('product_h', array('id' => $id))->row();
                 $data['edit']				= $this->master_models->get_value_harga($id_2)->row();
                 $data['product']			= $this->master_models->get_product()->result();
                 $data['ukuran']				= $this->master_models->get_ukuran()->result();
@@ -299,7 +289,6 @@ class Master extends CI_Controller
 				$data['judul'] 				= 'Master Quantity';
 				$data['sub_judul'] 		    = 'Ukuran';
 				$data['content'] 			= 'admin/master/edit_master_harga';
-				$data['content_head']	    = $this->admin_models->get_heading()->result();
 				$this->load->view('admin/home', $data);
             }
 
@@ -315,5 +304,83 @@ class Master extends CI_Controller
                 $this->session->set_flashdata('info', 'harga berhasil di update');
                 redirect('master/harga');
                 
-            }
+			}
+
+			public function delete_master_harga($id)
+			{
+				$this->master_models->hapus_master_harga($id);
+				$this->session->set_flashdata('info', 'berhasil di hapus');
+				redirect('master/harga');
+
+			}
+			
+			public function box_custom()
+			{
+				$data['nav_top']			= 'master';
+				$id 						= 1;
+				$data['admin']				= $this->db->get_where('admin', array('id' => $id))->row();
+                $data['table']				= $this->master_models->get_custom()->result();
+                $data['qty']				= $this->master_models->get_qty()->result();                
+				$data['script_top']         = 'admin/script_top';
+				$data['script_bottom']      = 'admin/script_btm';
+				$data['admin_nav']		    = 'admin/admin_nav';
+				$data['judul'] 				= 'Master Quantity';
+				$data['sub_judul'] 		    = 'Ukuran';
+				$data['content'] 			= 'admin/master/master_custom';
+				$this->load->view('admin/home', $data);
+
+			}
+
+			public function add_custom_box()
+			{
+				$data = array(
+								'luas'		=> $this->input->post('luas'),
+								'id_qty'	=> $this->input->post('id_qty'),
+								'harga' 	=> str_replace(array('Rp.',' ','.'),'',$this->input->post('harga')),
+								'berat'		=> $this->input->post('berat')
+							);      
+                $this->master_models->tambah_custom_demensi($data);
+                $this->session->set_flashdata('info', 'berhasil di tambahkan');
+                redirect('master/box_custom');
+
+			}
+
+			public function edit_master_custom($id)
+			{
+				$data['nav_top']			= 'master';
+				$data['admin']				= $this->db->get_where('admin', array('id' => '1'))->row();
+                $data['edit']				= $this->master_models->get_custom_edit($id)->row();
+                $data['qty']				= $this->master_models->get_qty()->result();
+				$data['script_top']         = 'admin/script_top';
+				$data['script_bottom']      = 'admin/script_btm';
+				$data['admin_nav']		    = 'admin/admin_nav';
+				$data['judul'] 				= 'Master Quantity';
+				$data['sub_judul'] 		    = 'Ukuran';
+				$data['content'] 			= 'admin/master/edit_master_custom';
+				$this->load->view('admin/home', $data);
+
+			}
+
+			public function update_custom_box()
+			{
+				$id 	= $this->input->post('id');
+				$data 	= array(
+					'luas'		=> $this->input->post('luas'),
+					'id_qty'	=> $this->input->post('id_qty'),
+					'harga' 	=> str_replace(array('Rp.',' ','.'),'',$this->input->post('harga')),
+					'berat'		=> $this->input->post('berat')
+				);      
+				$this->master_models->update_custom_demensi($data,$id);
+				$this->session->set_flashdata('info', 'berhasil di update');
+				redirect('master/box_custom');
+
+			}
+
+			public function delete_custom_box($id)
+			{
+				$this->master_models->hapus_custom_demensi($id);
+				$this->session->set_flashdata('info', 'berhasil di hapus');
+				redirect('master/box_custom');
+			}
+
         }

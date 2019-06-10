@@ -79,7 +79,7 @@
                           </button>
                       </a>
 
-                       <a href="<?php echo base_url('admin/del_slideshow/'.$row->id.'/'.$row->background); ?>" >
+                       <a href="<?php echo base_url('admin/del_slideshow/'.$row->id.'/'.$row->background); ?>" onclick="javascript: return confirm('Anda yakin hapus ?')" >
                          <button type="button" class="btn btn-outline-primary btn-sm">
                             <i class="fa fa-trash ">Hapus</i>
                           </button>

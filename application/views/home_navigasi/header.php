@@ -82,16 +82,16 @@
                                 <a href="<?php echo base_url();?>">Home</a>
                             </li>
                             <li>
-                                <a href="#product" class="scroll">Product</a>
+                                <a href="<?php echo base_url('home#product');?>">Product</a>
                             </li>
                             <li  <?php echo ($nav == 'gallery')? $active :""; ?>>
-                                <a href="#gallery" class="scroll">Gallery</a>
+                                <a href="#gallery">Gallery</a>
                             </li>
                             <li>
-                                <a href="#faq" class="scroll">Cara Pemesanan</a>
+                                <a href="<?php echo base_url('home#faq');?>">Cara Pemesanan</a>
                             </li>
-                            <li  <?php echo ($nav == 'custom box')? $active :""; ?>>
-                                <a href="#" class="scroll">Custom Box</a>
+                            <li  <?php echo ($nav == 'custom_box')? $active :""; ?>>
+                                <a href="<?php echo base_url('buat-custom-box');?>">Custom Box</a>
                             </li>
                             <li  <?php echo ($nav == 'bukti_transfer')? $active :""; ?>>
                                 <a href="<?php echo base_url('upload-bukti-transfer');?>">Upload Bukti Transfer</a>

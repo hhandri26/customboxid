@@ -68,6 +68,9 @@
         <li <?php echo (basename($_SERVER['PHP_SELF']) == 'harga')? $active :""; ?>>
           <a href="<?php echo base_url('master/harga');?>"><i class="fa fa-ellipsis-v"></i>Master Harga</a>
         </li>
+        <li <?php echo (basename($_SERVER['PHP_SELF']) == 'box_custom')? $active :""; ?>>
+          <a href="<?php echo base_url('master/box_custom');?>"><i class="fa fa-ellipsis-v"></i>Box Custom</a>
+        </li>
       </ul>
     </li>
 

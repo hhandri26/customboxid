@@ -151,4 +151,47 @@
             $this->db->where('id',$id);
             $this->db->update('master_harga',$data);
         }
+
+        public function get_custom()
+        {
+            $this->db->select('a.id, a.product, a.luas, a.id_qty, a.harga, a.berat, b.qty as qty');
+            $this->db->join('master_qty b','a.id_qty = b.id','left');
+            $this->db->from('master_custom a');
+            return $this->db->get();
+
+        }
+
+        public function tambah_custom_demensi($data)
+        {
+            return $this->db->insert('master_custom',$data);
+        }
+
+        public function get_custom_edit($id)
+        {
+            $this->db->select('a.id, a.product, a.luas, a.id_qty, a.harga, a.berat, b.qty as qty');
+            $this->db->join('master_qty b','a.id_qty = b.id','left');
+            $this->db->where('a.id',$id);
+            $this->db->from('master_custom a');
+            return $this->db->get();
+
+        }
+
+        public function update_custom_demensi($data,$id)
+        {
+            $this->db->where('id',$id);
+            return $this->db->update('master_custom',$data);
+        }
+
+        public function hapus_custom_demensi($id)
+        {
+            $this->db->where('id',$id);
+            return $this->db->delete('master_custom');
+
+        }
+
+        public function hapus_master_harga($id)
+        {
+            $this->db->where('id',$id);
+            return $this->db->delete('master_harga');
+        }
     }

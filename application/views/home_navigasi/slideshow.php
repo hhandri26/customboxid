@@ -70,7 +70,7 @@
                              data-frames='[{"from":"y:50px;opacity:0;","speed":1000,"to":"o:1;","delay":1000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:2px 2px 2px 2px;"}]'
                              data-textAlign="['center','center','center','center']"
                              style="z-index: 7; white-space: nowrap; font-family:'Raleway', sans-serif; !important; font-weight: 100;">
-                            <a href="#shop" class="btn btn-transparent-blue btn-large margin-10px-right">Lihat Product</a>
+                            <a href="#product" class="btn btn-transparent-blue btn-large margin-10px-right">Lihat Product</a>
                         </div>
                     </li>
                     <?php } ?>

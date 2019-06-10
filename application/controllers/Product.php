@@ -181,7 +181,7 @@ class Product extends CI_Controller
                             'ukuran'        =>$this->input->post('ukuran'),
                             'qty'           =>$this->input->post('qty'),
                             'ongkir'        =>$this->input->post('ongkir'),
-                            'kurir'         =>$this->input->post('state'),
+                            'kurir'         =>$this->input->post('kurir'),
                             'harga'         =>$this->input->post('harga_barang'),
                             'total_harga'   =>$this->input->post('total_harga2'),
                             'alamat_lengkap'=>$this->input->post('alamat_lengkap'),

@@ -22,26 +22,31 @@
                             <th>Product</th>
                             <th class="text-center">Ukuran</th>
                             <th class="text-center">Jumlah Box</th>
+                            <th class="text-center"> Warna</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td>
-                                <img class="shopping-product" src="<?php echo base_url('assets/img/product/'.$detail->gambar);?>" alt="your product">
                                 <div class="product-name">
                                     <h6 class="text-large no-margin text-extra-dark-gray">
-                                        <?php echo $detail->title;?>
+                                        Custom Box
                                     </h6>
                                 </div>
                             </td>
                             <td>
                                 <h6 class="text-large no-margin text-center text-green">
-                                    <?php echo $ukuran->ukuran;?>
+                                    <?php echo $panjang."Cm X".$lebar."Cm X".$tinggi."Cm";?>
                                 </h6>
                             </td>
                             <td>
                                 <h6 class="text-large no-margin text-center text-green">
                                     <?php echo $qty->qty;?>
+                                </h6>
+                            </td>
+                            <td>
+                                <h6 class="text-large no-margin text-center text-green">
+                                    <input type="color" value="<?php echo $warna;?>" readonly="">
                                 </h6>
                             </td>
                         </tr>
@@ -96,12 +101,12 @@
                         </div>
                         <div id="hasil">
                         </div>
-                        <input type="hidden" value="<?php echo $harga->berat;?>" id="berat">
+                        <input type="hidden" value="<?php echo $berat;?>" id="berat">
                         <input type="hidden" value="<?php echo $info->id_provinsi;?>" id="sel1">
                         <input type="hidden" value="<?php echo $info->id_kota;?>" id="sel2">
-                        <input type="hidden" value="<?php echo $harga->harga;?>" id="harga_barang" name="harga_barang">
-                        <input type="hidden" value="<?php echo $detail->title;?>" name="product">
-                        <input type="hidden" value="<?php echo  $ukuran->ukuran;?>" name="ukuran">
+                        <input type="hidden" value="<?php echo $harga;?>" id="harga_barang" name="harga_barang">
+                        <input type="hidden" value="Custom" name="product">
+                        <input type="hidden" value="<?php echo $panjang."Cm X".$lebar."Cm X".$tinggi."Cm";?>" name="ukuran">
                         <input type="hidden" value="<?php echo  $qty->qty;?>" name="qty">
                         <input type="hidden" name="total_harga2" id="total_harga2">
                         <div class="form-group">
@@ -122,7 +127,7 @@
                         <tr>
                             <td>Harga Barang:</td> 
                             <td class="text-green text-right">
-                                <input type="text" id="harga" value="<?php echo "Rp " . number_format($harga->harga,2,',','.');?>" readonly>
+                                <input type="text" id="harga" value="<?php echo "Rp " . number_format($harga,2,',','.');?>" readonly>
                             </td>
                         </tr>
                         <tr>

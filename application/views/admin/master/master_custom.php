@@ -9,28 +9,13 @@
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                 <h4 class="modal-title">Tambah Harga</h4>
             </div>
-            <form class="form-horizontal" action="<?php echo base_url('master/add_harga')?>" method="post" enctype="multipart/form-data" role="form">
+            <form class="form-horizontal" action="<?php echo base_url('master/add_custom_box')?>" method="post" enctype="multipart/form-data" role="form">
                 <div class="modal-body">
+                    
                     <div class="form-group">
-                        <label class="col-lg-2 col-sm-3 control-label">Product</label>
+                        <label class="col-lg-2 col-sm-3 control-label">Luas</label>
                         <div class="col-lg-9">
-                            <select require class="form-control select2" name="id_product" style="width: 100%;">
-                                <option value="">- Pilih Product -</option>
-                                <?php foreach($product as $row){;?>
-                                    <option value="<?php echo $row->id;?>"><?php echo $row->title;?></option>
-                                <?php }?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 col-sm-3 control-label">Ukuran</label>
-                        <div class="col-lg-9">
-                            <select require class="form-control select2" name="id_ukuran" style="width: 100%;">
-                                <option value="">- Pilih Ukuran -</option>
-                                <?php foreach($ukuran as $row2){;?>
-                                    <option value="<?php echo $row2->id;?>"><?php echo $row2->ukuran;?></option>
-                                <?php }?>
-                            </select>
+                           <input type="text" name="luas" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
@@ -61,7 +46,6 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                   
                     <input type="submit" name="submit" class="btn btn-info" value="Tambah">
                     <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal</button>
                 </div>
@@ -74,8 +58,7 @@
         <thead>
             <tr>
             <th>No</th>
-            <th>Product</th>
-            <th>Ukuran</th>
+            <th>Dimensi</th>
             <th>Quantity</th>
             <th>Harga</th>
             <th>Berat</th>
@@ -86,17 +69,16 @@
         <?php $no=1; foreach ($table as $row ) {?>
             <tr>
             <td><?php echo $no++ ;?></td>
-            <td><?php echo $row->product ;?></td>
-            <td><?php echo $row->ukuran ;?></td>
+            <td><?php echo $row->luas ;?></td>
             <td><?php echo $row->qty ;?></td>
             <td><?php echo "Rp " . number_format($row->harga,2,',','.') ;?></td>
             <td><?php echo $row->berat ;?></td>
             <td>
-                <a href ="<?php echo base_url('master/edit_master_harga/'.$row->id);?>" class="btn btn-info btn-sm">
+                <a href ="<?php echo base_url('master/edit_master_custom/'.$row->id);?>" class="btn btn-info btn-sm">
                     <i class="glyphicon glyphicon-pencil"></i> 
                 </a>
 
-                <a href ="<?php echo base_url('master/delete_master_harga/'.$row->id);?>" onclick="javascript: return confirm('Anda yakin hapus ?')" class="btn btn-danger btn-sm">
+                <a href ="<?php echo base_url('master/delete_custom_box/'.$row->id);?>" onclick="javascript: return confirm('Anda yakin hapus ?')" class="btn btn-danger btn-sm">
                     <i class="fa fa-trash"></i> 
                 </a>
             </td>
