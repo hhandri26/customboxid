@@ -44,6 +44,10 @@
           <a href="<?php echo base_url('admin/partners');?>"><i class="fa fa-ellipsis-v"></i> Partners</a>
         </li>
 
+        <li <?php echo (basename($_SERVER['PHP_SELF']) == 'gallery')? $active :""; ?>>
+          <a href="<?php echo base_url('gallery');?>"><i class="fa fa-ellipsis-v"></i> Gallery</a>
+        </li>
+
       </ul>
     </li>
 

@@ -7,4 +7,4 @@ $route['detail-box/(:any)']     = 'product/detail/$1';
 $route['pesan-box']             = 'product/order';
 $route['upload-bukti-transfer'] = 'product/bukti_transfer';
 $route['buat-custom-box']       = 'custombox';
-$route['pesan-box-custom']       = 'custombox/checkout';
+$route['pesan-box-custom']      = 'custombox/checkout';

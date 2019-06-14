@@ -30,3 +30,22 @@ function readURL(input) {
 $("#profile-id").change(function(){
     readURL(this);
 });
+
+var url     = $("#url_gallery").val();
+var gallery = function(page){
+                $("#loader").show();
+                $("#load_more").show();
+                $.ajax({
+                    url:  url+"gallery/get_gallery",
+                    type:'GET',
+                    data: {page:page}
+                }).done(function(response){
+                    $("#gallery").append(response);
+                    $("#loader").hide();
+                    $('#load_more').data('val', ($('#load_more').data('val')+1));
+                    //scroll();
+                    if(response == ""){
+                        $("#load_more").hide();
+                    }
+                });
+            };      

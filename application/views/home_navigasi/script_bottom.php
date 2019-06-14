@@ -24,5 +24,5 @@
 <script src="<?php echo base_url();?>assets/admin/plugins/iCheck/icheck.min.js"></script>
 <script src="<?php echo base_url();?>assets/custom/js/get_harga.js"></script>
 <script src="<?php echo base_url();?>assets/custom/js/get_data_transfer.js"></script>
-<script src="<?php echo base_url();?>assets/custom/js/global.js"></script>
+<script src="<?php echo base_url();?>assets/custom/js/global_front.js"></script>
 <script src="<?php echo base_url();?>assets/custom/js/kurir.js"></script>

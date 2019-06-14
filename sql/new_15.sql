@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `customboxid` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `customboxid`;
 -- MySQL dump 10.13  Distrib 8.0.15, for Win64 (x86_64)
 --
 -- Host: localhost    Database: customboxid
@@ -95,6 +97,31 @@ INSERT INTO `faq` VALUES (2,'Bisa untuk custom size box?','semua disini bisa di 
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gallery`
+--
+
+DROP TABLE IF EXISTS `gallery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `gallery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gambar` varchar(45) DEFAULT NULL,
+  `title` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gallery`
+--
+
+LOCK TABLES `gallery` WRITE;
+/*!40000 ALTER TABLE `gallery` DISABLE KEYS */;
+INSERT INTO `gallery` VALUES (2,'product5.jpeg','1'),(3,'product8.jpeg','ww'),(4,'product7.jpeg','7'),(5,'product3.jpeg','3'),(7,'product1.jpeg','11');
+/*!40000 ALTER TABLE `gallery` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `heading`
 --
 
@@ -107,7 +134,7 @@ CREATE TABLE `heading` (
   `title` varchar(255) NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +143,7 @@ CREATE TABLE `heading` (
 
 LOCK TABLES `heading` WRITE;
 /*!40000 ALTER TABLE `heading` DISABLE KEYS */;
-INSERT INTO `heading` VALUES (1,'backgorund.jpg','BUILD YOUR CUSTOM BOX HERE','                                    <p>E - Mailer Box, Cake Box, Shoe Box, Custom Box<br></p>\r\n                              ');
+INSERT INTO `heading` VALUES (5,'backgorund1.jpg','BUILD YOUR CUSTOM BOX HERE','E - mailer box, Cake box, Shoe Box, Custom Box');
 /*!40000 ALTER TABLE `heading` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,6 +186,34 @@ INSERT INTO `info` VALUES (1,'new_logo.png','#','#','#','PT TINACOKRO BOX Blok S
 UNLOCK TABLES;
 
 --
+-- Table structure for table `master_custom`
+--
+
+DROP TABLE IF EXISTS `master_custom`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `master_custom` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product` varchar(45) DEFAULT NULL,
+  `luas` int(11) DEFAULT NULL,
+  `id_qty` int(11) DEFAULT NULL,
+  `harga` float DEFAULT NULL,
+  `berat` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `master_custom`
+--
+
+LOCK TABLES `master_custom` WRITE;
+/*!40000 ALTER TABLE `master_custom` DISABLE KEYS */;
+INSERT INTO `master_custom` VALUES (2,NULL,1000,4,50000,1),(3,NULL,3375,4,100000,2);
+/*!40000 ALTER TABLE `master_custom` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `master_harga`
 --
 
@@ -173,7 +228,7 @@ CREATE TABLE `master_harga` (
   `harga` varchar(45) DEFAULT NULL,
   `berat` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,7 +237,7 @@ CREATE TABLE `master_harga` (
 
 LOCK TABLES `master_harga` WRITE;
 /*!40000 ALTER TABLE `master_harga` DISABLE KEYS */;
-INSERT INTO `master_harga` VALUES (1,8,3,4,'50000',3),(2,8,4,4,'30000',1);
+INSERT INTO `master_harga` VALUES (1,8,3,4,'50000',3),(3,9,3,4,'20000',2);
 /*!40000 ALTER TABLE `master_harga` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +318,7 @@ CREATE TABLE `orderan` (
   `kurir` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `no_pemesanan_UNIQUE` (`no_pemesanan`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,7 +327,7 @@ CREATE TABLE `orderan` (
 
 LOCK TABLES `orderan` WRITE;
 /*!40000 ALTER TABLE `orderan` DISABLE KEYS */;
-INSERT INTO `orderan` VALUES (4,'5cf646726485a','Handri','handrisaeputra@gmail.com','081808784785','Begini Bgitu','04-Jun-19, 12:22 pm',NULL,NULL,'E- Mailer Box','10Cm X 20Cm X 30Cm','10','54000','50000','104000','Kedaung Baru',NULL,NULL,'jne'),(5,'5cf6476976116','Handri','handrisaeputra@gmail.com','081808784785','negini','04-Jun-19, 12:26 pm','3','jne','E- Mailer Box','10Cm X 20Cm X 30Cm','10','54000','50000','104000','Kedaung',NULL,NULL,'jne'),(6,'5cf647c85c24d','Handri','handrisaeputra@gmail.com','081808784785','negini','04-Jun-19, 12:28 pm','3','jne','E- Mailer Box','10Cm X 20Cm X 30Cm','10','54000','50000','104000','Kedaung',NULL,NULL,'jne');
+INSERT INTO `orderan` VALUES (4,'5cf646726485a','Handri','handrisaeputra@gmail.com','081808784785','Begini Bgitu','04-Jun-19, 12:22 pm',NULL,NULL,'E- Mailer Box','10Cm X 20Cm X 30Cm','10','54000','50000','104000','Kedaung Baru',3,'rni.jpg','jne'),(7,'5cf866f5f1454','Bahrul Mubarok','bahrul.mubarok@gmail.com','0878821212121','Box nya yang itu','06-Jun-19, 3:05 am','3','pos','E- Mailer Box','10Cm X 20Cm X 30Cm','10','27000','50000','77000','Legok',1,'','pos');
 /*!40000 ALTER TABLE `orderan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -475,4 +530,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-04 17:42:29
+-- Dump completed on 2019-06-14 11:22:53

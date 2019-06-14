@@ -76,7 +76,7 @@
                                           cols="25" placeholder="Pesan Anda"></textarea>
                                 </div>
                                 <div class="button_div">
-                                    <a href="#." class="btn btn-blue btn-large text-extra-small width-100">Kirim Pesan</a>
+                                    <input type="submit" value="submit" class="btn btn-blue btn-large text-extra-small width-100">
                                 </div>
                             </div>
                         </form>

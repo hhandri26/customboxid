@@ -85,7 +85,7 @@
                                 <a href="<?php echo base_url('home#product');?>">Product</a>
                             </li>
                             <li  <?php echo ($nav == 'gallery')? $active :""; ?>>
-                                <a href="#gallery">Gallery</a>
+                                <a href="<?php echo base_url('gallery/home');?>">Gallery</a>
                             </li>
                             <li>
                                 <a href="<?php echo base_url('home#faq');?>">Cara Pemesanan</a>
