@@ -189,8 +189,10 @@ class Product extends CI_Controller
                             'waktu'         =>date('d-M-y, g:i a')
             );
             $info           = $this->db->get_where('info', array('id' => '1'))->row();
-            $this->product_models->new_order($data);
-            $this->pdf_invoice($data,$info);
+            //$this->product_models->new_order($data);
+            //$this->pdf_invoice($data,$info);
+            // return $this->load->view('success', $data, $info);
+            return $this->success_page($data,$info);
             
         }
 
@@ -283,6 +285,21 @@ class Product extends CI_Controller
             //$pdf->Output();
             $file = $pdf->Output('','S');
             $this->send_email_models->send($data,$info,$file);
+        }
+
+        public function success_page($data2,$info){
+            $data['data2']              = $data2;
+            $data['info']               = $info;
+            $data['info']				= $this->db->get_where('info', array('id' => '1'))->row();
+            $data['seo']				= $this->db->get_where('seo', array('id' => '1'))->row();
+            $data['nav']		 		= 'product';
+            $data['counter']			= $this->pengunjung->get_pengunjung();
+            $data['script_top']    		= 'home_navigasi/script_top';
+            $data['script_bottom']  	= 'home_navigasi/script_bottom';
+            $data['header'] 			= 'home_navigasi/header';
+            $data['footer'] 			= 'home_navigasi/footer';
+            $this->load->view('success', $data);
+
         }
 
         public function bukti_transfer()

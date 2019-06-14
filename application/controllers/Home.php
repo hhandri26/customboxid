@@ -81,18 +81,5 @@ class Home extends CI_Controller
 
 			}
 
-
-			public function success()
-			{
-				$id 						= 1;
-				$data['info']				= $this->db->get_where('info', array('id' => $id))->row();
-				$data['seo']				= $this->db->get_where('seo', array('id' => $id))->row();
-				$data['script_top']    		= 'home_navigasi/script_top';
-				$data['script_bottom']  	= 'home_navigasi/script_bottom';
-				$data['header'] 			= 'home_navigasi/header';
-				$data['footer'] 			= 'home_navigasi/footer';
-				$this->load->view('success', $data);
-			}
-
 		
 		}

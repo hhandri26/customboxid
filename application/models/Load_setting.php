@@ -24,12 +24,18 @@
 			$this->db->update('info', $data);
 		}
 
-		public function edit_tab2($alamat, $title, $hp, $email)
+		public function edit_tab2($alamat, $title, $hp, $email, $no_rekening,$pesan_invoice,$pesan_vertifikasi, $id_provinsi, $id_kota)
 		{
 			$data = array('alamat' 		=> $alamat ,
 						  'title'		=> $title,
 						  'hp' 			=> $hp,
-						  'email'		=> $email );
+						  'email'		=> $email,
+						  'no_rekening'	=> $no_rekening,
+						  'pesan_invoice'		=> $pesan_invoice,
+						  'pesan_vertifikasi' 	=> $pesan_vertifikasi,
+						  'id_provinsi' =>$id_provinsi,
+						  'id_kota' 	=>$id_kota
+						 );
 			$this->db->update('info', $data);
 		}
 

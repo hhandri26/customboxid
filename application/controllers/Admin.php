@@ -226,7 +226,12 @@ class Admin extends CI_Controller
 				$title		    =$this->input->post('title');
 				$hp        		=$this->input->post('hp');
 				$email        	=$this->input->post('email');
-                $this->load_setting->edit_tab2($alamat, $title, $hp, $email);
+				$no_rekening 	=$this->input->post('no_rekening');
+				$pesan_invoice 	=$this->input->post('pesan_invoice');
+				$pesan_vertifikasi =$this->input->post('pesan_vertifikasi');
+				$id_provinsi 	=$this->input->post('id_provinsi');
+				$id_kota 		=$this->input->post('id_kota');
+                $this->load_setting->edit_tab2($alamat, $title, $hp, $email, $no_rekening,$pesan_invoice,$pesan_vertifikasi,$id_provinsi, $id_kota);
             	$this->session->set_flashdata('info', 'berhasil di Update!');
 				redirect('admin/setting');	
 			}

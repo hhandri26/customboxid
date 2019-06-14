@@ -267,6 +267,40 @@
                   <input type="text" class="form-control"  name="email" required value="<?php echo $info->email;?>" >
                 </div>
 
+              
+              <label for="email" class="col-form-label">No rekening</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                  <input type="text" class="form-control"  name="no_rekening" required value="<?php echo $info->no_rekening;?>" >
+                </div>
+
+              <label for="email" class="col-form-label">Pesan Invoice</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                  <textarea class="form-control" name="pesan_invoice"><?php echo $info->pesan_invoice;?></textarea>
+          
+                </div>
+
+              <label for="email" class="col-form-label">Pesan Vertifikasi</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                  <textarea class="form-control" name="pesan_vertifikasi"><?php echo $info->pesan_vertifikasi;?></textarea>
+          
+                </div>
+              
+              <label for="email" class="col-form-label">Kode Provinsi</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                  <input type="text" class="form-control"  name="id_provinsi" required value="<?php echo $info->id_provinsi;?>" >
+                </div>
+              
+              <label for="email" class="col-form-label">Kode Kota</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                  <input type="text" class="form-control"  name="id_kota" required value="<?php echo $info->id_kota;?>" >
+                </div>
+              
+
              
 
                <div class="modal-footer">
